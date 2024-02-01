@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct CemboAIApp: App {
+    @StateObject var viewModel = OpenAIViewModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(viewModel)
         }
     }
 }

@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct AiResponse {
+struct AiResponse: Decodable {
     let choices: [Response]
 }
 
-struct Response {
+struct Response: Decodable {
     let message: Message
 }
 
-struct Message {
+struct Message: Decodable {
     let role, content: String
 }
