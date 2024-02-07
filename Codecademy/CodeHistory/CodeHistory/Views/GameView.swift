@@ -20,10 +20,21 @@ struct GameView: View {
                     .padding()
                 QuestionView(question: viewModel.currentQuestion)
             }
+            .foregroundColor(.white)
+            .navigationBarHidden(true)
+            .environmentObject(viewModel)
         }
-        .foregroundColor(.white)
-        .navigationBarHidden(true)
-        .environmentObject(viewModel)
+        .background(
+            NavigationLink(
+                destination: ScoreView(
+                    viewModel: ScoreViewModel(
+                        correctGuesses: viewModel.correctGuesses,
+                        incorrectGuesses: viewModel.incorrectGuesses
+                    )
+                ),
+                label: { EmptyView() }
+            )
+        )
     }
 }
 

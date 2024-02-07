@@ -25,8 +25,10 @@ struct QuestionView: View {
                         print("Tapped on option with the text: \(question.possibleAnswers[answerIndex])")
                         viewModel.makeGuess(atIndex: answerIndex)
                     }) {
-                        ChoiceTextView(choiceText: question.possibleAnswers[answerIndex])
-                            .background(viewModel.color(forOptionIndex: answerIndex))
+                        ChoiceTextView(
+                            choiceText: question.possibleAnswers[answerIndex]
+                        )
+                        .background(viewModel.color(forOptionIndex: answerIndex))
                     }
                     .disabled(viewModel.guessWasMade)
                 }
@@ -41,5 +43,8 @@ struct QuestionView: View {
 }
 
 #Preview {
-    QuestionView(question: Game().currentQuestion)
+    QuestionView(
+        question: Game().currentQuestion
+    )
+    .environmentObject(GameViewModel())
 }
